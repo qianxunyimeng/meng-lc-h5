@@ -1,4 +1,4 @@
-const { defineConfig } = require('eslint-define-config');
+const { defineConfig } = require('eslint-define-config')
 
 module.exports = defineConfig({
   env: {
@@ -164,7 +164,7 @@ module.exports = defineConfig({
     '@typescript-eslint/no-redeclare': 'error',
 
     // best-practice
-    'array-callback-return': 'error',
+    'array-callback-return': 'warn',
     'block-scoped-var': 'error',
     'no-alert': 'warn',
     'no-case-declarations': 'error',
@@ -187,6 +187,7 @@ module.exports = defineConfig({
     'prefer-exponentiation-operator': 'error',
 
     // ts
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -305,4 +306,4 @@ module.exports = defineConfig({
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
   },
-});
+})
