@@ -14,6 +14,8 @@ export default {
     limitsFrontEndBtn: 'FrontEndBtn',
     limitsBackEnd: 'BackEnd',
     limitsBackEndEndPage: 'BackEndEndPage',
+    visual: 'visual',
+    pageDesign: 'pageDesign',
     menu: 'menu',
     menu1: 'menu1',
     menu11: 'menu11',

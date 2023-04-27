@@ -3,6 +3,7 @@
     class="layout-navbars-breadcrumb-user pr15"
     :style="{ flex: layoutUserFlexNum }"
   >
+    <!-- 组件大小 -->
     <el-dropdown
       :show-timeout="70"
       :hide-timeout="50"
@@ -32,6 +33,8 @@
         </el-dropdown-menu>
       </template>
     </el-dropdown>
+
+    <!-- 语言切换 -->
     <el-dropdown
       :show-timeout="70"
       :hide-timeout="50"
@@ -59,25 +62,31 @@
           <el-dropdown-item command="en" :disabled="state.disabledI18n === 'en'"
             >English</el-dropdown-item
           >
-          <el-dropdown-item
+          <!-- <el-dropdown-item
             command="zh-tw"
             :disabled="state.disabledI18n === 'zh-tw'"
             >繁體中文</el-dropdown-item
-          >
+          > -->
         </el-dropdown-menu>
       </template>
     </el-dropdown>
+
+    <!-- 菜单搜索 -->
     <div class="layout-navbars-breadcrumb-user-icon" @click="onSearchClick">
       <el-icon :title="$t('message.user.title2')">
         <ele-Search />
       </el-icon>
     </div>
+
+    <!-- 布局配置 -->
     <div
       class="layout-navbars-breadcrumb-user-icon"
       @click="onLayoutSetingClick"
     >
       <i class="icon-skin iconfont" :title="$t('message.user.title3')"></i>
     </div>
+    
+    <!-- 消息 -->
     <div
       class="layout-navbars-breadcrumb-user-icon"
       ref="userNewsBadgeRef"
@@ -101,6 +110,8 @@
     >
       <UserNews />
     </el-popover>
+
+    <!-- 全屏 -->
     <div
       class="layout-navbars-breadcrumb-user-icon mr10"
       @click="onScreenfullClick"

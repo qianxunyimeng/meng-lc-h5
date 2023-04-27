@@ -257,6 +257,38 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
         ],
       },
       {
+        path: '/visual',
+        name: 'Visual',
+        component: () => import('/@/layout/routerView/parent.vue'),
+        meta: {
+          title: 'message.router.visual',
+          isLink: '',
+          isHide: false,
+          isKeepAlive: true,
+          isAffix: false,
+          isIframe: false,
+          roles: ['admin', 'common'],
+          icon: 'iconfont icon-caidan',
+        },
+        children: [
+          {
+            path: '/visual/page-designe',
+            name: 'PageDesigne',
+            component: () => import('/@/views/visual/pageDesigne/index.vue'),
+            meta: {
+              title: 'message.router.pageDesign',
+              isLink: '',
+              isHide: false,
+              isKeepAlive: true,
+              isAffix: false,
+              isIframe: false,
+              roles: ['admin', 'common'],
+              icon: 'iconfont icon-caidan',
+            },
+          },
+        ],
+      },
+      {
         path: '/menu',
         name: 'menu',
         component: () => import('/@/layout/routerView/parent.vue'),

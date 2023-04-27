@@ -22,13 +22,13 @@
       </template>
       <el-empty v-else :description="$t('message.user.newDesc')" />
     </div>
-    <div
+    <!-- <div
       v-if="state.newsList.length > 0"
       class="foot-box"
       @click="onGoToGiteeClick"
     >
       {{ $t('message.user.newGo') }}
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -40,13 +40,7 @@ const state = reactive({
   newsList: [
     {
       label: '关于版本发布的通知',
-      value:
-        'vue-next-admin，基于 vue3 + CompositionAPI + typescript + vite + element plus，正式发布时间：2021年02月28日！',
-      time: '2020-12-08',
-    },
-    {
-      label: '关于学习交流的通知',
-      value: 'QQ群号码 665452019，欢迎小伙伴入群学习交流探讨！',
+      value: 'MengUI Low Code h5 Vue版本发布',
       time: '2020-12-08',
     },
   ],

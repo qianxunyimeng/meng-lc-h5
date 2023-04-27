@@ -4,8 +4,8 @@
     <LockScreen v-if="themeConfig.isLockScreen" />
     <Setings v-show="setLockScreen" ref="setingsRef" />
     <CloseFull v-if="!themeConfig.isLockScreen" />
-    <Upgrade v-if="getVersion" />
-    <Sponsors />
+    <!-- <Upgrade v-if="getVersion" /> -->
+    <!-- <Sponsors /> -->
   </el-config-provider>
 </template>
 

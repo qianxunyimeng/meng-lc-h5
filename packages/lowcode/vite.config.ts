@@ -5,6 +5,11 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend-plus'
 import viteCompression from 'vite-plugin-compression'
 import { buildConfig } from './src/utils/build'
 import type { ConfigEnv } from 'vite'
+console.log('======', process.cwd())
+
+const clientDir = resolve(process.cwd(), '../../dist/')
+
+console.log('clientDir:', clientDir)
 
 const pathResolve = (dir: string) => {
   return resolve(__dirname, '.', dir)
@@ -43,7 +48,7 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
       },
     },
     build: {
-      outDir: 'dist',
+      outDir: clientDir,
       chunkSizeWarningLimit: 1500,
       rollupOptions: {
         output: {
