@@ -72,7 +72,7 @@
 
 <script setup lang="ts" name="loginAccount">
 import { reactive, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { LocationQueryRaw, useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import Cookies from 'js-cookie'
@@ -136,12 +136,13 @@ const signInSuccess = (isNoPower: boolean | undefined) => {
     // 登录成功，跳到转首页
     // 如果是复制粘贴的路径，非首页/登录页，那么登录成功后重定向到对应的路径中
     if (route.query?.redirect) {
+      let queryStr: LocationQueryRaw = {}
+      if (route.query?.params && Object.keys(route.query?.params).length > 0) {
+        queryStr = JSON.parse(<string>route.query?.params)
+      }
       router.push({
         path: <string>route.query?.redirect,
-        query:
-          Object.keys(<string>route.query?.params).length > 0
-            ? JSON.parse(<string>route.query?.params)
-            : '',
+        query: queryStr
       })
     } else {
       router.push('/')

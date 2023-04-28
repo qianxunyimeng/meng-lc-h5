@@ -187,6 +187,7 @@ module.exports = defineConfig({
     'prefer-exponentiation-operator': 'error',
 
     // ts
+    '@typescript-eslint/ban-types': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

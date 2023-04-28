@@ -7,6 +7,8 @@
   "author": "",
   "main": "index.js",
   "scripts": {
+    "cz": "czg",
+    "prepare": "husky install",
     "dev": "pnpm -C packages/lowcode dev",
     "build:lc": "pnpm -C packages/lowcode build",
     "server": "serve .",
@@ -19,12 +21,18 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "@esbuild-kit/cjs-loader": "^2.4.2",
     "@meng-ui-vue/eslint-config": "workspace:*",
     "@types/node": "^18.16.1",
     "@vitejs/plugin-vue": "^4.2.1",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "cz-git": "^1.6.1",
+    "czg": "^1.6.1",
     "eslint": "^8.39.0",
     "eslint-define-config": "^1.20.0",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "live-server": "^1.2.2",
     "prettier": "^2.8.8",
@@ -38,6 +46,11 @@
   "engines": {
     "node": ">= 16",
     "pnpm": ">= 7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"

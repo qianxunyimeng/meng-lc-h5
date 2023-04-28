@@ -5,11 +5,8 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend-plus'
 import viteCompression from 'vite-plugin-compression'
 import { buildConfig } from './src/utils/build'
 import type { ConfigEnv } from 'vite'
-console.log('======', process.cwd())
 
 const clientDir = resolve(process.cwd(), '../../dist/')
-
-console.log('clientDir:', clientDir)
 
 const pathResolve = (dir: string) => {
   return resolve(__dirname, '.', dir)
@@ -32,6 +29,7 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
     root: process.cwd(),
     resolve: { alias },
     base: mode.command === 'serve' ? './' : env.VITE_PUBLIC_PATH,
+    //base: '/',
     optimizeDeps: { exclude: ['vue-demi'] },
     server: {
       host: '0.0.0.0',
@@ -60,6 +58,7 @@ const viteConfig = defineConfig((mode: ConfigEnv) => {
               return (
                 id
                   .toString()
+                  // eslint-disable-next-line no-useless-escape
                   .match(/\/node_modules\/(?!.pnpm)(?<moduleName>[^\/]*)\//)
                   ?.groups!.moduleName ?? 'vender'
               )
