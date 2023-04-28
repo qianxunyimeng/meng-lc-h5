@@ -9,9 +9,9 @@
   >
     <template v-for="val in menuLists">
       <el-sub-menu
-        :index="val.path"
         v-if="val.children && val.children.length > 0"
         :key="val.path"
+        :index="val.path"
       >
         <template #title>
           <SvgIcon :name="val.meta.icon" />
@@ -20,15 +20,15 @@
         <SubItem :chil="val.children" />
       </el-sub-menu>
       <template v-else>
-        <el-menu-item :index="val.path" :key="val.path">
+        <el-menu-item :key="val.path" :index="val.path">
           <SvgIcon :name="val.meta.icon" />
           <template
-            #title
             v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)"
+            #title
           >
             <span>{{ $t(val.meta.title) }}</span>
           </template>
-          <template #title v-else>
+          <template v-else #title>
             <a class="w100" @click.prevent="onALinkClick(val)">{{
               $t(val.meta.title)
             }}</a>
@@ -40,8 +40,9 @@
 </template>
 
 <script setup lang="ts" name="navMenuVertical">
-import { defineAsyncComponent, reactive, computed, onMounted, watch } from 'vue'
-import { useRoute, onBeforeRouteUpdate, RouteRecordRaw } from 'vue-router'
+import { computed, defineAsyncComponent, onMounted, reactive, watch } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useThemeConfig } from '/@/stores/themeConfig'
 import other from '/@/utils/other'

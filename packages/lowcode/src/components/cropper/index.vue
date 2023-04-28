@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog title="更换头像" v-model="state.isShowDialog" width="769px">
+    <el-dialog v-model="state.isShowDialog" title="更换头像" width="769px">
       <div class="cropper-warp">
         <div class="cropper-warp-left">
           <img :src="state.cropperImg" class="cropper-warp-left-img" />
@@ -29,8 +29,8 @@
       </div>
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="onCancel" size="default">取 消</el-button>
-          <el-button type="primary" @click="onSubmit" size="default"
+          <el-button size="default" @click="onCancel">取 消</el-button>
+          <el-button type="primary" size="default" @click="onSubmit"
             >更 换</el-button
           >
         </span>
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts" name="cropper">
-import { reactive, nextTick } from 'vue'
+import { nextTick, reactive } from 'vue'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
 
@@ -77,6 +77,7 @@ const initCropper = () => {
   const letImg = <HTMLImageElement>(
     document.querySelector('.cropper-warp-left-img')
   )
+
   state.cropper = new Cropper(letImg, {
     viewMode: 1,
     dragMode: 'none',
@@ -91,7 +92,7 @@ const initCropper = () => {
         .getCroppedCanvas()
         .toDataURL('image/jpeg')
     },
-  })
+  } as any)
 }
 
 // 暴露变量

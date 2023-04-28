@@ -17,18 +17,18 @@
             class="layout-navbars-breadcrumb-span"
           >
             <SvgIcon
+              v-if="themeConfig.isBreadcrumbIcon"
               :name="v.meta.icon"
               class="layout-navbars-breadcrumb-iconfont"
-              v-if="themeConfig.isBreadcrumbIcon"
             />
             <div v-if="!v.meta.tagsViewName">{{ $t(v.meta.title) }}</div>
             <div v-else>{{ v.meta.tagsViewName }}</div>
           </span>
           <a v-else @click.prevent="onBreadcrumbClick(v)">
             <SvgIcon
+              v-if="themeConfig.isBreadcrumbIcon"
               :name="v.meta.icon"
               class="layout-navbars-breadcrumb-iconfont"
-              v-if="themeConfig.isBreadcrumbIcon"
             />{{ $t(v.meta.title) }}
           </a>
         </el-breadcrumb-item>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts" name="layoutBreadcrumb">
-import { reactive, computed, onMounted } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import { Local } from '/@/utils/storage'
 import other from '/@/utils/other'

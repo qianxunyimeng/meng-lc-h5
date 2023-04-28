@@ -1,15 +1,15 @@
 <template>
   <div class="login-scan-container">
-    <div ref="qrcodeRef"></div>
+    <div ref="qrcodeRef" />
     <div class="font12 mt20 login-msg">
-      <i class="iconfont icon-saoyisao mr5"></i>
+      <i class="iconfont icon-saoyisao mr5" />
       <span>{{ $t('message.scan.text') }}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts" name="loginScan">
-import { ref, onMounted, nextTick } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import QRCode from 'qrcodejs2-fixes'
 
 // 定义变量内容
@@ -20,7 +20,7 @@ const initQrcode = () => {
   nextTick(() => {
     ;(<HTMLElement>qrcodeRef.value).innerHTML = ''
     new QRCode(qrcodeRef.value, {
-      text: `https://qm.qq.com/cgi-bin/qm/qr?k=RdUY97Vx0T0vZ_1OOu-X1yFNkWgDwbjC&jump_from=webapi`,
+      text: 'https://qm.qq.com/cgi-bin/qm/qr?k=RdUY97Vx0T0vZ_1OOu-X1yFNkWgDwbjC&jump_from=webapi',
       width: 260,
       height: 260,
       colorDark: '#000000',

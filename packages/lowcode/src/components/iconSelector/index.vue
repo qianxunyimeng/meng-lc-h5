@@ -1,31 +1,31 @@
 <template>
   <div class="icon-selector w100 h100">
     <el-input
+      ref="inputWidthRef"
       v-model="state.fontIconSearch"
       :placeholder="state.fontIconPlaceholder"
       :clearable="clearable"
       :disabled="disabled"
       :size="size"
-      ref="inputWidthRef"
       @clear="onClearFontIcon"
       @focus="onIconFocus"
       @blur="onIconBlur"
     >
       <template #prepend>
         <SvgIcon
-          :name="state.fontIconPrefix === '' ? prepend : state.fontIconPrefix"
-          class="font14"
           v-if="
             state.fontIconPrefix === ''
               ? prepend?.indexOf('ele-') > -1
               : state.fontIconPrefix?.indexOf('ele-') > -1
           "
+          :name="state.fontIconPrefix === '' ? prepend : state.fontIconPrefix"
+          class="font14"
         />
         <i
           v-else
           :class="state.fontIconPrefix === '' ? prepend : state.fontIconPrefix"
           class="font14"
-        ></i>
+        />
       </template>
     </el-input>
     <el-popover
@@ -74,12 +74,12 @@
 
 <script setup lang="ts" name="iconSelector">
 import {
-  defineAsyncComponent,
-  ref,
-  reactive,
-  onMounted,
-  nextTick,
   computed,
+  defineAsyncComponent,
+  nextTick,
+  onMounted,
+  reactive,
+  ref,
   watch,
 } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
@@ -170,9 +170,9 @@ const onIconBlur = () => {
 const fontIconSheetsFilterList = computed(() => {
   const list = fontIconTabNameList()
   if (!state.fontIconSearch) return list
-  let search = state.fontIconSearch.trim().toLowerCase()
+  const search = state.fontIconSearch.trim().toLowerCase()
   return list.filter((item: string) => {
-    if (item.toLowerCase().indexOf(search) !== -1) return item
+    if (item.toLowerCase().includes(search)) return item
   })
 })
 // 根据 tab name 类型设置图标
@@ -193,9 +193,9 @@ const initModeValueEcho = () => {
 // 处理 icon 类型，用于回显时，tab 高亮与初始化数据
 const initFontIconName = () => {
   let name = 'ali'
-  if (props.modelValue!.indexOf('iconfont') > -1) name = 'ali'
-  else if (props.modelValue!.indexOf('ele-') > -1) name = 'ele'
-  else if (props.modelValue!.indexOf('fa') > -1) name = 'awe'
+  if (props.modelValue!.includes('iconfont')) name = 'ali'
+  else if (props.modelValue!.includes('ele-')) name = 'ele'
+  else if (props.modelValue!.includes('fa')) name = 'awe'
   // 初始化 tab 高亮回显
   state.fontIconTabActive = name
   return name

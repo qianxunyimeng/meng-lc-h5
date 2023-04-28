@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-prototype-builtins */
 import type { App } from 'vue'
 
 /**

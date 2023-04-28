@@ -28,7 +28,7 @@ module.exports = defineConfig({
       parser: 'jsonc-eslint-parser',
     },
     {
-      files: ['*.ts', '*.vue'],
+      files: ['*.ts'],
       rules: {
         'no-undef': 'off',
       },
@@ -113,14 +113,15 @@ module.exports = defineConfig({
       parser: 'vue-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser',
-        extraFileExtensions: ['.vue'],
+        //extraFileExtensions: ['.vue'],
         ecmaVersion: 'latest',
-        ecmaFeatures: {
-          jsx: true,
-        },
+        // ecmaFeatures: {
+        //   jsx: true,
+        // },
       },
       rules: {
         'no-undef': 'off',
+        'no-extra-semi': 'warn',
       },
     },
 
@@ -250,10 +251,6 @@ module.exports = defineConfig({
             group: 'external',
             position: 'before',
           },
-          {
-            pattern: '@element-plus/**',
-            group: 'internal',
-          },
         ],
         pathGroupsExcludedImportTypes: ['type'],
       },
@@ -299,9 +296,9 @@ module.exports = defineConfig({
     'unicorn/prefer-number-properties': 'error',
     'unicorn/prefer-optional-catch-binding': 'error',
     'unicorn/prefer-prototype-methods': 'error',
-    'unicorn/prefer-query-selector': 'error',
+    'unicorn/prefer-query-selector': 'warn',
     'unicorn/prefer-reflect-apply': 'error',
-    'unicorn/prefer-string-slice': 'error',
+    'unicorn/prefer-string-slice': 'warn',
     'unicorn/prefer-string-starts-ends-with': 'error',
     'unicorn/prefer-string-trim-start-end': 'error',
     'unicorn/prefer-type-error': 'error',

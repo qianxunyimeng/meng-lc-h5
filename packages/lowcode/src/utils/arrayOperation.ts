@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /**
  * 判断两数组字符串是否相同（用于按钮权限验证），数组字符串中存在相同时会自动去重（按钮权限标识不会重复）
  * @param news 新数据

@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 /**
  * 时间日期转换
  * @param date 当前时间，new Date() 格式

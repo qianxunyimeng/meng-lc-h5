@@ -40,12 +40,12 @@ const Setings = defineAsyncComponent(
 const CloseFull = defineAsyncComponent(
   () => import('/@/layout/navBars/topBar/closeFull.vue')
 )
-const Upgrade = defineAsyncComponent(
-  () => import('/@/layout/upgrade/index.vue')
-)
-const Sponsors = defineAsyncComponent(
-  () => import('/@/layout/sponsors/index.vue')
-)
+// const Upgrade = defineAsyncComponent(
+//   () => import('/@/layout/upgrade/index.vue')
+// )
+// const Sponsors = defineAsyncComponent(
+//   () => import('/@/layout/sponsors/index.vue')
+// )
 
 // 定义变量内容
 const { messages, locale } = useI18n()
@@ -64,18 +64,18 @@ const setLockScreen = computed(() => {
     : themeConfig.value.lockScreenTime >= 0
 })
 // 获取版本号
-const getVersion = computed(() => {
-  let isVersion = false
-  if (route.path !== '/login') {
-    // @ts-ignore
-    if (
-      (Local.get('version') && Local.get('version') !== __NEXT_VERSION__) ||
-      !Local.get('version')
-    )
-      isVersion = true
-  }
-  return isVersion
-})
+// const getVersion = computed(() => {
+//   let isVersion = false
+//   if (route.path !== '/login') {
+//     // @ts-ignore
+//     if (
+//       (Local.get('version') && Local.get('version') !== __NEXT_VERSION__) ||
+//       !Local.get('version')
+//     )
+//       isVersion = true
+//   }
+//   return isVersion
+// })
 // 获取全局组件大小
 const getGlobalComponentSize = computed(() => {
   return other.globalComponentSize()

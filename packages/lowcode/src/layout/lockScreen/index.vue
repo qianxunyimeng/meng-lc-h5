@@ -1,14 +1,15 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div v-show="state.isShowLockScreen">
-    <div class="layout-lock-screen-mask"></div>
+    <div class="layout-lock-screen-mask" />
     <div
       class="layout-lock-screen-img"
       :class="{ 'layout-lock-screen-filter': state.isShowLoockLogin }"
-    ></div>
+    />
     <div class="layout-lock-screen">
       <div
-        class="layout-lock-screen-date"
         ref="layoutLockScreenDateRef"
+        class="layout-lock-screen-date"
         @mousedown="onDownPc"
         @mousemove="onMovePc"
         @mouseup="onEnd"
@@ -43,10 +44,10 @@
             <div class="layout-lock-screen-login-box-name">Administrator</div>
             <div class="layout-lock-screen-login-box-value">
               <el-input
-                placeholder="请输入密码"
                 ref="layoutLockScreenInputRef"
                 v-model="state.lockScreenPassword"
-                @keyup.enter.native.stop="onLockScreenSubmit()"
+                placeholder="请输入密码"
+                @keyup.enter.stop="onLockScreenSubmit()"
               >
                 <template #append>
                   <el-button @click="onLockScreenSubmit">
@@ -70,7 +71,7 @@
 </template>
 
 <script setup lang="ts" name="layoutLockScreen">
-import { nextTick, onMounted, reactive, ref, onUnmounted } from 'vue'
+import { nextTick, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { formatDate } from '/@/utils/formatTime'
 import { Local } from '/@/utils/storage'
 import { storeToRefs } from 'pinia'

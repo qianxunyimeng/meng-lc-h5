@@ -11,7 +11,7 @@
       @command="onComponentSizeChange"
     >
       <div class="layout-navbars-breadcrumb-user-icon">
-        <i class="iconfont icon-ziti" :title="$t('message.user.title0')"></i>
+        <i class="iconfont icon-ziti" :title="$t('message.user.title0')" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
@@ -50,7 +50,7 @@
               : 'icon-fuhao-zhongwen'
           "
           :title="$t('message.user.title1')"
-        ></i>
+        />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
@@ -83,14 +83,14 @@
       class="layout-navbars-breadcrumb-user-icon"
       @click="onLayoutSetingClick"
     >
-      <i class="icon-skin iconfont" :title="$t('message.user.title3')"></i>
+      <i class="icon-skin iconfont" :title="$t('message.user.title3')" />
     </div>
-    
+
     <!-- 消息 -->
     <div
-      class="layout-navbars-breadcrumb-user-icon"
       ref="userNewsBadgeRef"
       v-click-outside="onUserNewsClick"
+      class="layout-navbars-breadcrumb-user-icon"
     >
       <el-badge :is-dot="true">
         <el-icon :title="$t('message.user.title4')">
@@ -124,7 +124,7 @@
             : $t('message.user.title5')
         "
         :class="!state.isScreenfull ? 'icon-fullscreen' : 'icon-tuichuquanping'"
-      ></i>
+      />
     </div>
     <el-dropdown
       :show-timeout="70"
@@ -170,17 +170,17 @@
 
 <script setup lang="ts" name="layoutBreadcrumbUser">
 import {
+  computed,
   defineAsyncComponent,
+  onMounted,
+  reactive,
   ref,
   unref,
-  computed,
-  reactive,
-  onMounted,
 } from 'vue'
 import { useRouter } from 'vue-router'
 import {
-  ElMessageBox,
   ElMessage,
+  ElMessageBox,
   ClickOutside as vClickOutside,
 } from 'element-plus'
 import screenfull from 'screenfull'
@@ -190,7 +190,7 @@ import { useUserInfo } from '/@/stores/userInfo'
 import { useThemeConfig } from '/@/stores/themeConfig'
 import other from '/@/utils/other'
 import mittBus from '/@/utils/mitt'
-import { Session, Local } from '/@/utils/storage'
+import { Local, Session } from '/@/utils/storage'
 
 // 引入组件
 const UserNews = defineAsyncComponent(

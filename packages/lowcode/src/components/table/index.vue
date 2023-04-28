@@ -1,26 +1,26 @@
 <template>
   <div class="table-container">
     <el-table
+      v-loading="config.loading"
       :data="data"
       :border="setBorder"
       v-bind="$attrs"
       row-key="id"
       stripe
       style="width: 100%"
-      v-loading="config.loading"
       @selection-change="onSelectionChange"
     >
       <el-table-column
+        v-if="config.isSelection"
         type="selection"
         :reserve-selection="true"
         width="30"
-        v-if="config.isSelection"
       />
       <el-table-column
+        v-if="config.isSerialNo"
         type="index"
         label="序号"
         width="60"
-        v-if="config.isSerialNo"
       />
       <el-table-column
         v-for="(item, index) in setHeader"
@@ -30,7 +30,7 @@
         :width="item.colWidth"
         :label="item.title"
       >
-        <template v-slot="scope">
+        <template #default="scope">
           <template v-if="item.type === 'image'">
             <el-image
               :style="{ width: `${item.width}px`, height: `${item.height}px` }"
@@ -46,8 +46,8 @@
           </template>
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="100" v-if="config.isOperate">
-        <template v-slot="scope">
+      <el-table-column v-if="config.isOperate" label="操作" width="100">
+        <template #default="scope">
           <el-popconfirm title="确定删除吗？" @confirm="onDelRow(scope.row)">
             <template #reference>
               <el-button text type="primary">删除</el-button>
@@ -70,8 +70,7 @@
         background
         @size-change="onHandleSizeChange"
         @current-change="onHandleCurrentChange"
-      >
-      </el-pagination>
+      />
       <div class="table-footer-tool">
         <SvgIcon
           name="iconfont icon-dayin"
@@ -138,12 +137,12 @@
             <el-scrollbar>
               <div ref="toolSetRef" class="tool-sortable">
                 <div
-                  class="tool-sortable-item"
                   v-for="v in header"
                   :key="v.key"
+                  class="tool-sortable-item"
                   :data-key="v.key"
                 >
-                  <i class="fa fa-arrows-alt handle cursor-pointer"></i>
+                  <i class="fa fa-arrows-alt handle cursor-pointer" />
                   <el-checkbox
                     v-model="v.isCheck"
                     size="default"
@@ -162,7 +161,7 @@
 </template>
 
 <script setup lang="ts" name="netxTable">
-import { reactive, computed, nextTick, ref } from 'vue'
+import { computed, nextTick, reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import printJs from 'print-js'
 import table2excel from 'js-table2excel'
@@ -266,7 +265,7 @@ const onPrintTable = () => {
   // 自定义打印
   let tableTh = ''
   let tableTrTd = ''
-  let tableTd: any = {}
+  const tableTd: any = {}
   // 表头
   props.header.forEach((v) => {
     tableTh += `<th class="table-th">${v.title}</th>`

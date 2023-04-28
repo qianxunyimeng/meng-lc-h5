@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * 2020.11.29 lyt 整理
  * 工具类集合，适用于平时开发

@@ -1,9 +1,9 @@
 <template>
   <template v-for="val in chils">
     <el-sub-menu
-      :index="val.path"
-      :key="val.path"
       v-if="val.children && val.children.length > 0"
+      :key="val.path"
+      :index="val.path"
     >
       <template #title>
         <SvgIcon :name="val.meta.icon" />
@@ -12,7 +12,7 @@
       <sub-item :chil="val.children" />
     </el-sub-menu>
     <template v-else>
-      <el-menu-item :index="val.path" :key="val.path">
+      <el-menu-item :key="val.path" :index="val.path">
         <template
           v-if="!val.meta.isLink || (val.meta.isLink && val.meta.isIframe)"
         >
@@ -32,7 +32,7 @@
 
 <script setup lang="ts" name="navMenuSubItem">
 import { computed } from 'vue'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import other from '/@/utils/other'
 
 // 定义父组件传过来的值

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { nextTick } from 'vue'
 import * as svg from '@element-plus/icons-vue'
 

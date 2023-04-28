@@ -2,23 +2,23 @@
   <div class="layout-padding layout-padding-unset layout-iframe">
     <div class="layout-padding-auto layout-padding-view">
       <div
-        class="w100"
         v-for="v in setIframeList"
         :key="v.path"
         v-loading="v.meta.loading"
+        class="w100"
         element-loading-background="white"
       >
         <transition-group :name="name">
           <iframe
-            :src="v.meta.isLink"
+            v-show="getRoutePath === v.path"
             :key="v.path"
+            ref="iframeRef"
+            :src="v.meta.isLink"
             frameborder="0"
             height="100%"
             width="100%"
             style="position: absolute"
             :data-url="v.path"
-            v-show="getRoutePath === v.path"
-            ref="iframeRef"
           />
         </transition-group>
       </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts" name="layoutIframeView">
-import { computed, watch, ref, nextTick } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 // 定义父组件传过来的值
