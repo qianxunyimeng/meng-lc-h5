@@ -15,7 +15,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write --cache .",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
-    "lint:fix": "pnpm run lint --fix"
+    "lint:fix": "pnpm run lint --fix",
+    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -n ./changelog-option.js && git add CHANGELOG.md",
+    "postversion": "git push --tags"
   },
   "dependencies": {
     "vue": "^3.2.47"
@@ -28,6 +30,10 @@
     "@types/node": "^18.16.1",
     "@vitejs/plugin-vue": "^4.2.1",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "compare-func": "^2.0.0",
+    "conventional-changelog": "^3.1.25",
+    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-custom-config": "^0.3.1",
     "cz-git": "^1.6.1",
     "czg": "^1.6.1",
     "eslint": "^8.39.0",
